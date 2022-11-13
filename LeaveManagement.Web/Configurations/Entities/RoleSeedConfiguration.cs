@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LeaveManagement.Web.Constants;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,14 +13,14 @@ namespace LeaveManagement.Web.Configurations.Entities
                 new IdentityRole
                 {
                     Id = "a3656108-9304-4efe-811e-5188debe14c1",
-                    Name = "Administrator",
-                    NormalizedName = "ADMINISTRATOR"
+                    Name = Roles.Administrator,
+                    NormalizedName = Roles.Administrator.ToUpper()
                 },
                 new IdentityRole
                 {
                     Id = "d3856108-9304-4eaa-811e-5188dafe14c1",
-                    Name = "User",
-                    NormalizedName = "USER"
+                    Name = Roles.User,
+                    NormalizedName = Roles.User.ToUpper()
                 }
                 );
         }

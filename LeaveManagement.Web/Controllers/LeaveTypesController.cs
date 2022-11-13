@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LeaveManagement.Web.Constants;
 using LeaveManagement.Web.Contracts;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Models;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Web.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
@@ -43,7 +44,6 @@ namespace LeaveManagement.Web.Controllers
 
 
         // GET: LeaveTypes/Create
-        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
