@@ -2,11 +2,13 @@
 using LeaveManagement.Web.Contracts;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Web.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
@@ -39,7 +41,9 @@ namespace LeaveManagement.Web.Controllers
             return View(leaveTypeVM);
         }
 
+
         // GET: LeaveTypes/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
