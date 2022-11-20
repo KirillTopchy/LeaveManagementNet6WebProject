@@ -3,6 +3,7 @@ using LeaveManagement.Web.Constants;
 using LeaveManagement.Web.Contracts;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Models;
+using LeaveManagement.Web.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace LeaveManagement.Web.Controllers
         private readonly IMapper _mapper;
         private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-        public EmployeesController(UserManager<Employee> userManager, 
+        public EmployeesController(UserManager<Employee> userManager,
                                    IMapper mapper,
                                    ILeaveAllocationRepository leaveAllocationRepository)
         {
@@ -34,7 +35,7 @@ namespace LeaveManagement.Web.Controllers
         // GET: EmployeesController/ViewAllocations/employeeId
         public async Task<IActionResult> ViewAllocations(string id)
         {
-            var model = await _leaveAllocationRepository.GetEmployeeAllocation(id);
+            var model = await _leaveAllocationRepository.GetEmployeeAllocations(id);
             return View(model);
         }
 
@@ -59,16 +60,21 @@ namespace LeaveManagement.Web.Controllers
             }
         }
 
-        // GET: EmployeesController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: EmployeesController/EditAllocation/5
+        public async Task<IActionResult> EditAllocation(int id)
         {
-            return View();
+            var model = await _leaveAllocationRepository.GetEmployeeAllocation(id);
+
+            if (model is null)
+                return NotFound();
+
+            return View(model);
         }
 
-        // POST: EmployeesController/Edit/5
+        // POST: EmployeesController/EditAllocation/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditAllocation(int id, IFormCollection collection)
         {
             try
             {
