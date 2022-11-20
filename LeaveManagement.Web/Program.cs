@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using LeaveManagement.Web.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using LeaveManagement.Web.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
