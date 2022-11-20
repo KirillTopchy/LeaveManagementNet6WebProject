@@ -53,8 +53,8 @@
                     <button type="button" class="btn btn-primary">
                         Remaining Days <span class="badge bg-secondary">@allocation.NumberOfDays</span>
                     </button>
+                    <a class="btn btn-warning" asp-action="EditAllocation" asp-route-id="@allocation.Id"><i class="fa-regular fa-pen-to-square"></i>Edit Allocation</a>
                 </h6>
-                <a class="btn btn-warning" asp-action="EditAllocation" asp-route-id="@allocation.Id"><i class="fa-regular fa-pen-to-square"></i>Edit Allocation</a>
             </li>
         }
     </ul>
