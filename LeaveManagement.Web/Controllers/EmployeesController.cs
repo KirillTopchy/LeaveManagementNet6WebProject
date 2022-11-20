@@ -3,7 +3,6 @@ using LeaveManagement.Web.Constants;
 using LeaveManagement.Web.Contracts;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Models;
-using LeaveManagement.Web.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,8 +22,8 @@ namespace LeaveManagement.Web.Controllers
         {
             _userManager = userManager;
             _mapper = mapper;
-            this._leaveAllocationRepository = leaveAllocationRepository;
-            this._leaveTypeRepository = leaveTypeRepository;
+            _leaveAllocationRepository = leaveAllocationRepository;
+            _leaveTypeRepository = leaveTypeRepository;
         }
 
         // GET: EmployeesController
@@ -40,27 +39,6 @@ namespace LeaveManagement.Web.Controllers
         {
             var model = await _leaveAllocationRepository.GetEmployeeAllocations(id);
             return View(model);
-        }
-
-        // GET: EmployeesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: EmployeesController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: EmployeesController/EditAllocation/5
@@ -83,16 +61,10 @@ namespace LeaveManagement.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var leavaAllocation = await _leaveAllocationRepository.GetAsync(model.Id);
-                    if(leavaAllocation is null)
+                    if (await _leaveAllocationRepository.UpdateEmployeeAllocation(model))
                     {
-                        return NotFound();
+                        return RedirectToAction(nameof(ViewAllocations), new { id = model.EmployeeId });
                     }
-                    leavaAllocation.Period = model.Period;
-                    leavaAllocation.NumberOfDays = model.NumberOfDays;
-                    await _leaveAllocationRepository.UpdateAsync(leavaAllocation);
-
-                    return RedirectToAction(nameof(ViewAllocations), new {id = model.EmployeeId});
                 }
             }
             catch (Exception ex)
@@ -103,27 +75,6 @@ namespace LeaveManagement.Web.Controllers
             model.Employee = _mapper.Map<EmployeeListVM>(await _userManager.FindByIdAsync(model.EmployeeId));
             model.LeaveType = _mapper.Map<LeaveTypeVM>(await _leaveTypeRepository.GetAsync(model.LeaveTypeId));
             return View(model);
-        }
-
-        // GET: EmployeesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: EmployeesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
