@@ -22,5 +22,6 @@ namespace LeaveManagement.Web.Data
 
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocatons { get; set; }
+        public DbSet<LeaveRequest> LeaveRequests { get; set; }
     }
 }
