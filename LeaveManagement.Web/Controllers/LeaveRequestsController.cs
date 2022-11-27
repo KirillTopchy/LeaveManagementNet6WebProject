@@ -39,7 +39,7 @@ namespace LeaveManagement.Web.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             var model = await _leaveRequestRepository.GetLeaveRequestAsync(id);
-            if(model is null)
+            if (model is null)
             {
                 return NotFound();
             }
@@ -60,6 +60,22 @@ namespace LeaveManagement.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Cancel(int id)
+        {
+            try
+            {
+                await _leaveRequestRepository.CancelLeaveRequest(id);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "An Error Has Occued. Please Try Again Later.");
+            }
+
+            return RedirectToAction(nameof(MyLeave));
         }
 
         // GET: LeaveRequests/Create
@@ -84,15 +100,19 @@ namespace LeaveManagement.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await _leaveRequestRepository.CreateLeaveRequest(model);
-                    return RedirectToAction(nameof(Index));
+                    var isValidRequest = await _leaveRequestRepository.CreateLeaveRequest(model);
+                    if (isValidRequest)
+                    {
+                        return RedirectToAction(nameof(MyLeave));
+                    }
+                    ModelState.AddModelError(string.Empty, "You have exceeded your allocation with this request.");
                 }
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, "An Error Has Occued. Please Try Again Later.");
             }
-            
+
             model.LeaveTypes = new SelectList(_context.LeaveTypes, "Id", "Name", model.LeaveTypeId);
             return View(model);
         }

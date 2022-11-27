@@ -95,7 +95,12 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Cancel" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Cancel Request</a>
+                    @if (item.Approved is null){
+                        <form asp-action="Cancel">
+                            <input name="Id" value="@item.Id" type="hidden" />
+                            <button type="submit" class="btn btn-danger btn-sm">Cancel Request</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }
