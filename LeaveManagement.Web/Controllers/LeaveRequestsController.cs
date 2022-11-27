@@ -25,6 +25,12 @@ namespace LeaveManagement.Web.Controllers
             _leaveRequestRepository = leaveRequestRepository;
         }
 
+        public async Task<ActionResult> MyLeave()
+        {
+            var model = await _leaveRequestRepository.GetMyLeaveDetails();
+            return View(model);
+        }
+
         // GET: LeaveRequests
         public async Task<IActionResult> Index()
         {
