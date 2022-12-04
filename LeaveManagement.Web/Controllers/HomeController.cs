@@ -1,4 +1,5 @@
 ﻿using LeaveManagement.Web.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -26,7 +27,16 @@ namespace LeaveManagement.Web.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var requestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            var exceptionHandlerPartFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if (exceptionHandlerPartFeature is not null)
+            {
+                Exception exception = exceptionHandlerPartFeature.Error;
+                _logger.LogError(exception, $"Error Encountered By Iser: {this.User?.Identity?.Name} | request Id: {requestId}");
+            }
+
+            return View(new ErrorViewModel { RequestId = requestId });
         }
     }
 }
