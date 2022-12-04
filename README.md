@@ -22,3 +22,9 @@
 - Open Package Console Manager and run the command "Update-Database"
 - When completed, Run Website in Visual Studio to seed default Admin User
 - Login as admin user using: Username: admin@localhost.com | Password: P@ssword1
+
+# Some Project Screen Shots
+![image](https://user-images.githubusercontent.com/89339107/205497170-00d2bd56-12f5-4cd9-8c7a-415d4121ec1a.png)
+![image](https://user-images.githubusercontent.com/89339107/205497249-07551a5d-bfda-4833-bf4f-cb61af64f460.png)
+![image](https://user-images.githubusercontent.com/89339107/205497283-5c1d2de8-c5e1-40ea-af11-b8ed829538cd.png)
+![image](https://user-images.githubusercontent.com/89339107/205497352-29ab94ce-5376-400f-99d3-2a093e16d894.png)
