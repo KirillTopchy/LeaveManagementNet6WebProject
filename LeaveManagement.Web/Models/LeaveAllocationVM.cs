@@ -6,7 +6,7 @@ namespace LeaveManagement.Web.Models
     {
         [Required]
         public int Id { get; set; }
-        
+
         [Required]
         [Display(Name = "Number Of Days")]
         [Range(1, 50, ErrorMessage = "Invalid Number Provided. Choose a number between 1 and 50.")]
@@ -17,4 +17,4 @@ namespace LeaveManagement.Web.Models
         public int Period { get; set; }
         public LeaveTypeVM? LeaveType { get; set; }
     }
-} 
+}

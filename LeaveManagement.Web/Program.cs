@@ -2,10 +2,10 @@ using LeaveManagement.Web.Configurations;
 using LeaveManagement.Web.Contracts;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using LeaveManagement.Web.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

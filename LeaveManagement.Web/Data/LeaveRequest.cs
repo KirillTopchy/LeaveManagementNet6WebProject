@@ -1,5 +1,4 @@
-﻿using Microsoft.Build.Framework;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeaveManagement.Web.Data
 {
