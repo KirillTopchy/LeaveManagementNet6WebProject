@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveManagement.Web", "LeaveManagement.Web\LeaveManagement.Web.csproj", "{B51C36B3-60BA-4A3D-8C0F-268292401518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Web", "LeaveManagement.Web\LeaveManagement.Web.csproj", "{B51C36B3-60BA-4A3D-8C0F-268292401518}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Data", "LeaveManagement.Data\LeaveManagement.Data.csproj", "{384496C9-F8D9-4D05-BD0A-92622D3BCA28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagementCommon", "LeaveManagementCommon\LeaveManagementCommon.csproj", "{47B17FB8-4995-4535-AC2E-69615B84312D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveManagement.Application", "LeaveManagement.Application\LeaveManagement.Application.csproj", "{F9B3EDF5-4905-4C36-AFD3-AA713080F748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{B51C36B3-60BA-4A3D-8C0F-268292401518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51C36B3-60BA-4A3D-8C0F-268292401518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B51C36B3-60BA-4A3D-8C0F-268292401518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384496C9-F8D9-4D05-BD0A-92622D3BCA28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384496C9-F8D9-4D05-BD0A-92622D3BCA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384496C9-F8D9-4D05-BD0A-92622D3BCA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384496C9-F8D9-4D05-BD0A-92622D3BCA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B17FB8-4995-4535-AC2E-69615B84312D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B17FB8-4995-4535-AC2E-69615B84312D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B17FB8-4995-4535-AC2E-69615B84312D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B17FB8-4995-4535-AC2E-69615B84312D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B3EDF5-4905-4C36-AFD3-AA713080F748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B3EDF5-4905-4C36-AFD3-AA713080F748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B3EDF5-4905-4C36-AFD3-AA713080F748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B3EDF5-4905-4C36-AFD3-AA713080F748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
